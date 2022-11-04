@@ -1,24 +1,17 @@
-# README
+# MediApp v2.0
+### Requisitos
+* Tener Ruby instalado v3.0.4
+* Tener postgresql instalado
+* Tener yarn instalado
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Pasos para correr proyecto
+```console
+$ gem install bundler
+$ bundle install
+$ yarn install
+$ rails db:create
+$ rails db:migrate
+$ rails server
+```
+El último comando abre la aplicación en http://127.0.0.1:3000
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

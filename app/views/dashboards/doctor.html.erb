@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<% if current_user %>
+  <h1>Dashboard de Doctor </h1>
+  <h3> Bienvenid@ Dr.  <%= user.full_name %> <h3>
+  <% if !user.has_office? %>
+    <h4>Parece que aun no tiene un consultorio creado. Haga clic en el siguiente botón para hacerlo </h4>
+    <%= link_to 'Crear consultorio', new_office_path, class: "btn btn-primary" %>
+  <% else %>
+    
+    <h4><%= user.doctor.office.name %></h4>
+      
+  <% end %>
+  <br>
+  <h5>Calendario</h5>
+  <div class="row">
+    <div class="col-md-8">
+      <%= week_calendar() do |date| %>
+        <%= date.day %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

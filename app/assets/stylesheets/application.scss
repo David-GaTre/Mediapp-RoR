@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ 
+@import "bootstrap/scss/bootstrap";
+@import "simple_calendar";
+
+ #doctor-form {
+  display: none;
+ }
+
+ #patient-form {
+  display: none;
+ }

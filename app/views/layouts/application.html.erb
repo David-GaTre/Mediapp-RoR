@@ -8,9 +8,13 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= render 'layouts/navbar.html.erb' if current_user %>
+      <%= yield %> 
+    </div>
   </body>
 </html>
