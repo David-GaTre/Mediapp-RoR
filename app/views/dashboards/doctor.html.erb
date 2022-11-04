@@ -11,4 +11,12 @@
       
   <% end %>
   <br>
+  <h5>Calendario</h5>
+  <div class="row">
+    <div class="col-md-8">
+      <%= week_calendar() do |date| %>
+        <%= date.day %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
