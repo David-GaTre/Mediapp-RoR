@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :offices
+  resources :patients
+  resources :doctors
+  
+  root "dashboards#index"
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }

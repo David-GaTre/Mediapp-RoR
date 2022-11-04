@@ -1,0 +1,30 @@
+<%= form_with(model: office) do |form| %>
+  <% if office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
+
+      <ul>
+        <% office.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :doctor_id, value: current_user.doctor.id %>
+
+  <%= form.label :name, "Nombre del consultorio ",class: "form-label" %>
+  <%= form.text_field :name, class: "form-control" %>
+
+  <%= form.label :address,"Dirección", class: "form-label" %>
+  <%= form.text_field :address, class: "form-control" %>
+
+  <%= form.label :phone_number, "Teléfono", class: "form-label" %>
+  <%= form.text_field :phone_number, class: "form-control" %>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit "Crear consultorio" %>
+  </div>
+<% end %>
