@@ -1,5 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-danger alert-dismissible fade show" >
+  <p id="notice"> <%= notice %> </p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+<% end %>
 <% if current_user %>
   <h1>Dashboard de Paciente</h1>
   <h3> Bienvenid@  <%= user.full_name%> <h3>
+  <% if offices.empty? %>
+    <div class="alert alert-primary">
+      <p>
+        Parece que aún no estás registrado en algún consultorio virtual.
+        Comunícate con tu doctor para que te proporcione el código de registro y puedas acceder a su consultorio virtual.
+      </p>
+    </div>
+  <% else %>
+    <% offices.each do |office| %>
+    <div class="office-container">
+      <h3><%= office.name %></h3>
+      <h5>Teléfono: <%= office.phone_number %></h5>
+      <h5>Dirección: <%= office.address %></h5>
+    </div>
+    </br>
+    <% end %>
+  <% end %> 
+  <br>
+  <div class="row mx-auto text-center">
+    <div class="col-md-4">
+      <%= form_with url: "/register_office", method: :post do |form| %>
+        <%= form.hidden_field :id, value: user.patient.id %>
+        <div class="input-group mb-3">
+          <%= form.text_field :code, :class => "form-control", :placeholder => "Ej. ABkAWb7n" %>
+          <div class="input-group-append">
+            <%= form.submit "Añadir Consultorio", :class => "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
 <% end %>

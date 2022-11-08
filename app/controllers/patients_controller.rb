@@ -57,6 +57,21 @@ class PatientsController < ApplicationController
     end
   end
 
+  def register_office 
+    office_code = params[:code]
+    office = Office.all.where(code: office_code).first
+    patient = Patient.find(params[:id])
+    if office.nil?
+      redirect_to root_path, notice: "Consultorio no encontrado"
+    elsif patient.offices.include?(office)
+      redirect_to root_path, notice: "Consultorio previamente registrado"
+    else
+      patient.offices << office
+      redirect_to root_path
+    end
+    
+  end
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_patient

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :doctors
   
   root "dashboards#index"
+
+  post '/register_office', to: 'patients#register_office'
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
