@@ -69,6 +69,14 @@ class PatientsController < ApplicationController
       patient.offices << office
       redirect_to root_path
     end
+  end
+
+  def schedule_meeting 
+    patient = Patient.find(params[:patient])
+    office =  Office.find(params[:office])
+    respond_to do |format|
+      format.html { render :template => "dashboards/schedule_meeting", :locals => { :patient => patient, :office => office } }
+    end
     
   end
  

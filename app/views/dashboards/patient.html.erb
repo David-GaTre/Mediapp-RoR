@@ -1,6 +1,6 @@
 <% if notice %>
-  <div class="alert alert-danger alert-dismissible fade show" >
-  <p id="notice"> <%= notice %> </p>
+  <div class="alert alert-secondary alert-dismissible fade show" >
+  <h4 id="notice" class="text-black"> <%= notice %> </h4>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -17,11 +17,13 @@
       </p>
     </div>
   <% else %>
+    <h4>Tiene <%= @meetings_today.count %> consulta(s) agendada(s) para hoy. </h4>
     <% offices.each do |office| %>
     <div class="office-container">
       <h3><%= office.name %></h3>
       <h5>Teléfono: <%= office.phone_number %></h5>
       <h5>Dirección: <%= office.address %></h5>
+      <%= button_to "Agendar Cita", meetings_scheduler_path(office: office.id, patient: user.patient.id) , method: :post, :class => 'btn btn-secondary' %>
     </div>
     </br>
     <% end %>

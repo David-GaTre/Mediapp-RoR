@@ -15,8 +15,22 @@
     <h5>Calendario</h5>
     <div class="row">
       <div class="col-md-8">
-        <%= week_calendar() do |date| %>
-          <%= date.day %>
+        <%= month_calendar events: @meetings do |date, meetings| %>
+          <%= date %>
+
+          <% meetings.each do |meeting| %>
+            <div>
+              <%= meeting.patient.user.full_name %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <h4>Consultas de hoy</h4>
+        <% @meetings_today.each do |meeting| %>
+          <%= meeting.patient.user.full_name %> -
+          <%= meeting.start_time.strftime("%H:%M") %>
+          <br>
         <% end %>
       </div>
     </div>
