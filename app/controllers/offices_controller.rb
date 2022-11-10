@@ -1,3 +1,4 @@
+require 'safe_random'
 class OfficesController < ApplicationController
   before_action :set_office, only: %i[ show edit update destroy ]
 
@@ -23,10 +24,11 @@ class OfficesController < ApplicationController
   def create
     
     @office = Office.new(office_params)
+    @office.code = SafeRandom.alphanumeric(8)
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to office_url(@office), notice: "Office was successfully created." }
+        format.html { redirect_to root_path, notice: "Office was successfully created." }
         format.json { render :show, status: :created, location: @office }
       else
         format.html { render :new, status: :unprocessable_entity }
