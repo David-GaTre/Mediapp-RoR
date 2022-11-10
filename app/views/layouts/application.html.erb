@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <%= render 'layouts/navbar.html.erb' if current_user %>
+    <% if current_user.role == "doctor" %>
+      <%= render 'layouts/navbar_doctor.html.erb', user: current_user %>
+    <% end %>
+    <div class="dashboard-container">
       <%= yield %> 
     </div>
   </body>

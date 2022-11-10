@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_090109) do
+ActiveRecord::Schema.define(version: 2022_11_10_002816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2022_11_09_090109) do
     t.bigint "office_id"
     t.index ["office_id"], name: "index_doctors_on_office_id"
     t.index ["user_id"], name: "index_doctors_on_user_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.text "comments"
+    t.string "entry_type"
+    t.date "date"
+    t.bigint "meeting_id"
+    t.bigint "office_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meeting_id"], name: "index_entries_on_meeting_id"
+    t.index ["office_id"], name: "index_entries_on_office_id"
+    t.index ["patient_id"], name: "index_entries_on_patient_id"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -83,6 +97,9 @@ ActiveRecord::Schema.define(version: 2022_11_09_090109) do
 
   add_foreign_key "doctors", "offices"
   add_foreign_key "doctors", "users"
+  add_foreign_key "entries", "meetings"
+  add_foreign_key "entries", "offices"
+  add_foreign_key "entries", "patients"
   add_foreign_key "meetings", "doctors"
   add_foreign_key "meetings", "patients"
   add_foreign_key "offices", "doctors"
