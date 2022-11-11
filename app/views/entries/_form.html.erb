@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6">
+  <%= form_with(model: entry) do |form| %>
+    <% if entry.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+        <ul>
+          <% entry.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% patients_array = @patients.map { |p| [p.user.full_name, p.id] } %>
+    <%= form.label :patient_id, "Paciente",class: "form-label" %>
+    <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
+    
+    <%= form.label :entry_type, "Tipo de Entrada ",class: "form-label" %>
+    <%= form.select :entry_type, options_for_select([ [], [ "Consulta", "consultation"], ["Hospitalización", "hospitalization"] ], ""),{}, :class => "form-control" %>
+
+    <%= form.label :comments, "Comentarios ",class: "form-label" %>
+    <%= form.text_area :comments, class: "form-control" %>
+
+    <%= form.hidden_field :office_id, value: entry.office_id %>
+    
+
+    <br>
+    <div class="actions">
+      <%= form.submit 'Crear', class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+  </div>
+</div>

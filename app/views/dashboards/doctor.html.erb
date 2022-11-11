@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <% if current_user %>
-  <h1>Dashboard de Doctor </h1>
   <h3> Bienvenid@ Dr.  <%= user.full_name %> <h3>
   <% if !user.has_office? %>
     <h4>Parece que aun no tiene un consultorio creado. Haga clic en el siguiente botón para hacerlo </h4>
@@ -12,14 +11,15 @@
       Comparte el siguiente código con sus pacientes para que se registren en su consultorio virtual <span class="text-primary"><%= user.doctor.office.code %> </span>
     </div>
       
-    <h5>Calendario</h5>
+    <h5>Mi Agenda</h5>
     <div class="row">
       <div class="col-md-8">
-        <%= month_calendar events: @meetings do |date, meetings| %>
+        <%= calendar(number_of_days: 4, events: @meetings) do |date, meetings| %>
           <%= date %>
 
           <% meetings.each do |meeting| %>
             <div>
+              <b><%= meeting.start_time.strftime("%H:%M") %></b> - 
               <%= meeting.patient.user.full_name %>
             </div>
           <% end %>
