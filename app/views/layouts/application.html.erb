@@ -12,8 +12,12 @@
   </head>
 
   <body>
-    <% if current_user.role == "doctor" %>
-      <%= render 'layouts/navbar_doctor.html.erb', user: current_user %>
+    <% if current_user %>
+      <% if current_user.role == "doctor" %>
+        <%= render 'layouts/navbar_doctor.html.erb', user: current_user %>
+      <% elsif current_user.role == "patient" %>
+        <%= render 'layouts/navbar_patient.html.erb', user: current_user %>
+      <% end %>
     <% end %>
     <div class="dashboard-container">
       <%= yield %> 

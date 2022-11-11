@@ -9,15 +9,19 @@
     </div>
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
         <ul class="navbar-nav ml-auto flex-nowrap">
-            <li class="nav-item">
-              <a class="nav-link" href=<%= new_entry_path(office: user.doctor.office.id)%>>Crear Entrada</a>
-            </li>
+            <% if !user.doctor.office.nil?  %>
+              <li class="nav-item">
+                <a class="nav-link" href=<%= new_entry_path(office: user.doctor.office.id)%>>Crear Entrada</a>
+              </li>
+            <% end %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Ver
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href=<%= entries_path(office: user.doctor.office.id) %>>Entradas</a>
+                <% if !user.doctor.office.nil? %>
+                  <a class="dropdown-item" href=<%= entries_path(office: user.doctor.office.id) %>>Entradas</a>
+                <% end %>
                 <a class="dropdown-item" href="#">Pacientes</a>
                 <a class="dropdown-item" href="#">Recetas</a>
               </div>
