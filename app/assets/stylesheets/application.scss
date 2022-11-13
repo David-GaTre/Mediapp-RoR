@@ -13,28 +13,68 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$custom-colors: (
+  "platinum": #e8e9eb,
+  "mahogany": #b84300,
+  "olive": #6f7c12,
+  "slategray": #67838e,
+  "raisinblack": #1e212b,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$spacers: (
+  6: (
+    $spacer * 4,
+  ),
+  7: (
+    $spacer * 5,
+  ),
+  8: (
+    $spacer * 6.25,
+  ),
+  9: (
+    $spacer * 7.5,
+  ),
+  10: (
+    $spacer * 9.375,
+  ),
+);
  
 @import "bootstrap/scss/bootstrap";
 @import "simple_calendar";
 
- #doctor-form {
+#doctor-form {
   display: none;
- }
+}
 
- #patient-form {
+#patient-form {
   display: none;
- }
+}
 
- .office-container {
-  background-color: #e4f5e8;
-  padding: 3%;
-  border-radius: 15px;
- }
+html,
+body {
+  height: 100%;
+}
 
- .dashboard-container {
-  padding: 0 25px;
- }
+.full-height {
+  height: 100%;
+}
 
- .simple-calendar table {
-  min-height: 300px;
+.office-container {
+ background-color: #e4f5e8;
+ padding: 3%;
+ border-radius: 15px;
+}
+
+.dashboard-container {
+ padding: 0 25px;
+}
+
+.simple-calendar table {
+ min-height: 300px;
 }

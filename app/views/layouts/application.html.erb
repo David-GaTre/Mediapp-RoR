@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <%= yield %>
     <% if current_user %>
       <% if current_user.role == "doctor" %>
         <%= render 'layouts/navbar_doctor.html.erb', user: current_user %>
