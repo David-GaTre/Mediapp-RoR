@@ -113,6 +113,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.4)
     pry (0.14.1)
@@ -170,6 +172,7 @@ GEM
       railties (>= 5.0)
     rexml (3.2.5)
     rubyzip (2.3.2)
+    safe_random (0.0.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -186,6 +189,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     spring (4.1.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -230,6 +235,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
@@ -244,8 +250,10 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7)
+  safe_random
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  simple_calendar (~> 2.4)
   spring
   turbolinks (~> 5)
   tzinfo-data

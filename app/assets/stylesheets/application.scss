@@ -44,8 +44,9 @@ $spacers: (
     $spacer * 9.375,
   ),
 );
-
+ 
 @import "bootstrap/scss/bootstrap";
+@import "simple_calendar";
 
 #doctor-form {
   display: none;
@@ -62,4 +63,18 @@ body {
 
 .full-height {
   height: 100%;
+}
+
+.office-container {
+ background-color: #e4f5e8;
+ padding: 3%;
+ border-radius: 15px;
+}
+
+.dashboard-container {
+ padding: 0 25px;
+}
+
+.simple-calendar table {
+ min-height: 300px;
 }
