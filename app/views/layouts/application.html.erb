@@ -8,9 +8,20 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <%= yield %>
+    <% if current_user %>
+      <% if current_user.role == "doctor" %>
+        <%= render 'layouts/navbar_doctor.html.erb', user: current_user %>
+      <% elsif current_user.role == "patient" %>
+        <%= render 'layouts/navbar_patient.html.erb', user: current_user %>
+      <% end %>
+    <% end %>
+    <div class="dashboard-container">
+      <%= yield %> 
+    </div>
   </body>
 </html>

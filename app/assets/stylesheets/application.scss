@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$custom-colors: (
+  "platinum": #e8e9eb,
+  "mahogany": #b84300,
+  "olive": #6f7c12,
+  "slategray": #67838e,
+  "raisinblack": #1e212b,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$spacers: (
+  6: (
+    $spacer * 4,
+  ),
+  7: (
+    $spacer * 5,
+  ),
+  8: (
+    $spacer * 6.25,
+  ),
+  9: (
+    $spacer * 7.5,
+  ),
+  10: (
+    $spacer * 9.375,
+  ),
+);
+ 
+@import "bootstrap/scss/bootstrap";
+@import "simple_calendar";
+
+#doctor-form {
+  display: none;
+}
+
+#patient-form {
+  display: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.office-container {
+ background-color: #e4f5e8;
+ padding: 3%;
+ border-radius: 15px;
+}
+
+.dashboard-container {
+ padding: 0 25px;
+}
+
+.simple-calendar table {
+ min-height: 300px;
+}
