@@ -6,6 +6,8 @@
       
         <%= f.label :start_time %><br>
         <%= f.datetime_select :start_time, 
+        :start_hour => office.open_hour.strftime('%H').to_i, 
+        :end_hour => office.close_hour.strftime('%H').to_i-1,
         :minute_step => 30, 
         :selected => Date.today,
         :min => DateTime.now,

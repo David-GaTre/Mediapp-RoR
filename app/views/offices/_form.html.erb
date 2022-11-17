@@ -22,9 +22,17 @@
   <%= form.label :phone_number, "Teléfono", class: "form-label" %>
   <%= form.text_field :phone_number, class: "form-control" %>
 
+  <%= form.label :open_hour, "Hora de Apertura", class: "form-label" %>
+  <%= form.select "open_hour", (0..23).to_a %>:00
+
+  <%= form.label :close_hour, "Hora de Cierre", class: "form-label" %>
+  <%= form.select "close_hour", (0..23).to_a %>:00
+
   <br>
 
   <div class="actions">
     <%= form.submit "Crear consultorio" %>
   </div>
 <% end %>
+
+jquery:
