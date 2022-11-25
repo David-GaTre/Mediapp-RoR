@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_one :patient
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :confirmable #, :validatable
 
   def full_name    
     self.name + " " + self.first_last_name + " " + self.second_last_name
