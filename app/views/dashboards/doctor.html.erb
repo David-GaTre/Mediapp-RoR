@@ -7,7 +7,9 @@
   
   <% if !user.has_office? %>
     <h4>Parece que aun no tiene un consultorio creado. Haga clic en el siguiente botón para hacerlo </h4>
-    <%= link_to 'Crear consultorio', new_office_path, class: "btn btn-primary" %>
+    <div class="text-center">
+      <%= button_to 'Crear consultorio', new_office_path, method: :get, class: "btn btn-primary" %>
+    </div>
   <% else %>
     <div class="office-name-badge">
       <h5 style="margin: 10px"><%= user.doctor.office.name %></h5>

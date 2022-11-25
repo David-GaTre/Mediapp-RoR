@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
 
   post '/register_office', to: 'patients#register_office'
+  post '/filtered_entries', to: 'entries#filtered_entries', as: 'filtered_entries'
+  post '/delete_patient', to: 'patients#delete_patient', as: 'delete_patient'
   post 'prescription#download_prescription', action: :download_prescription, controller: 'prescriptions'
   get '/office_info', to: 'offices#show_info', as: 'office_info' 
   get '/my_meetings', to: 'meetings#show_my_meetings', as: 'show_my_meetings' 

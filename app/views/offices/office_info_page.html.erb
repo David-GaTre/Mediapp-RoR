@@ -22,6 +22,9 @@
     <p class="bg-text"> <%= office.close_hour.strftime('%H:%M') %></p>
 
   <br>
-  <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary btn-sm' %>
+  <div class="text-center">
+    <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary btn-sm' %>
+  </div>
+  <p class="back-btn"><strong><%= link_to 'Regresar', root_path %></strong></p>
   </div>
 </div>

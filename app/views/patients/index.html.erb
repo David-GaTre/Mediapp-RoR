@@ -1,25 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="bg-white shadow rounded p-3 m-3">
+  <p id="notice"><%= notice %></p>
 
-<h1>Patients</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @patients.each do |patient| %>
+  <h1 class="main-header">Pacientes del Consultorio</h1>
+  <h6>Total Pacientes: <%=@patients.count %></h6>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nombre </th>
+        <th># Consultas </th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.full_name %></td>
+          <td><%= Meeting.all.where(patient_id: patient.id, doctor_id: @office.doctor.id).count %></td>
+          <td><%= link_to "Elimiar", delete_patient_path(patient: patient.id, office: @office.id), method: :post, data: { confirm: '¿Estás seguro?' }%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Patient', new_patient_path %>
+  <br>
+</div>
+
+

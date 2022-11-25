@@ -29,7 +29,9 @@
                 <% if !user.doctor.office.nil? %>
                   <a class="dropdown-item" href=<%= prescriptions_path(office: user.doctor.office.id) %>>Recetas</a>
                 <% end %>
-                <a class="dropdown-item" href="#">Pacientes</a>
+                <% if !user.doctor.office.nil? %>
+                  <a class="dropdown-item" href=<%= patients_path(office: user.doctor.office.id) %>>Pacientes</a>
+                <% end %>
               </div>
             </li>
             <% if !user.doctor.office.nil? %>

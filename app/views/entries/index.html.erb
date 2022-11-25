@@ -1,72 +1,80 @@
 <p id="notice"><%= notice %></p>
 
 <h1 style="color:#b84300" font="font-family:verdana"><strong>Entradas</strong></h1>
-
-<table class="table table-striped ">
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Paciente</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entries.each do |entry| %>
-      
+<%= form_tag(filtered_entries_path, method: "post") do %>
+  <%= label_tag(:date_filter, "Fecha:") %>
+  <%= date_field_tag(:date_filter) %>
+  <%= label_tag(:patient_name, "Paciente:") %>
+  <%= text_field_tag(:patient_name) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<% if !@entries.nil? %>
+  <table class="table table-striped ">
+    <thead>
       <tr>
-        <td><%= entry.date %></td>
-        <td><%= entry.patient.user.full_name %></td>  
-        <td>  
-          <a type="button" data-toggle="modal" data-target="#entry-<%=entry.id%>"> Ver más </a> 
-        </td>  
-        <td>  
-          <%= link_to 'Editar', edit_entry_path(entry.id) %> 
-        </td>  
+        <th>Fecha</th>
+        <th>Paciente</th>
+        <th colspan="2"></th>
       </tr>
+    </thead>
 
-      
-      <div class="modal fade" id="entry-<%=entry.id%>">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
+    <tbody>
+      <% @entries.each do |entry| %>
+        
+        <tr>
+          <td><%= entry.date %></td>
+          <td><%= entry.patient.user.full_name %></td>  
+          <td>  
+            <a type="button" data-toggle="modal" data-target="#entry-<%=entry.id%>"> Ver más </a> 
+          </td>  
+          <td>  
+            <%= link_to 'Editar', edit_entry_path(entry.id) %> 
+          </td>  
+        </tr>
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title"><%= entry.patient.user.full_name%> - <%= entry.date %></h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+        
+        <div class="modal fade" id="entry-<%=entry.id%>">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-            <!-- Modal body -->
-            <div class="modal-body">
-              <div class="row">
-                <% if entry.bloodPressureDia && entry.bloodPressureSys %>
-                  <div class="col-md-4">
-                    <b>Presion: </b>
-                    <%= entry.bloodPressureSys%> / <%= entry.bloodPressureDia %>
-                  </div>
-                <% end %>
-                <% if entry.height %>
-                  <div class="col-md-4">
-                    <b>Altura: </b>
-                    <%= entry.height %>
-                  </div>
-                <% end %>
-                <% if entry.weight %>
-                  <div class="col-md-4">
-                    <b>Peso: </b>
-                    <%= entry.weight %>
-                  </div>
-                <% end %>
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title"><%= entry.patient.user.full_name%> - <%= entry.date %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
-              <br>
-              <%= entry.comments %>
-            </div>
 
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="row">
+                  <% if entry.bloodPressureDia && entry.bloodPressureSys %>
+                    <div class="col-md-4">
+                      <b>Presion: </b>
+                      <%= entry.bloodPressureSys%> / <%= entry.bloodPressureDia %>
+                    </div>
+                  <% end %>
+                  <% if entry.height %>
+                    <div class="col-md-4">
+                      <b>Altura: </b>
+                      <%= entry.height %>
+                    </div>
+                  <% end %>
+                  <% if entry.weight %>
+                    <div class="col-md-4">
+                      <b>Peso: </b>
+                      <%= entry.weight %>
+                    </div>
+                  <% end %>
+                </div>
+                <br>
+                <%= entry.comments %>
+              </div>
+
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </tbody>
-  <br>
-</table>
-<%= link_to 'Regresar', root_path %>
+      <% end %>
+    </tbody>
+    <br>
+  </table>
+<% end %>
+<p class="back-btn"><strong><%= link_to 'Regresar', root_path %></strong></p>
