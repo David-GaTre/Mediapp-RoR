@@ -41,7 +41,7 @@ class OfficesController < ApplicationController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to office_url(@office), notice: "Office was successfully updated." }
+        format.html { redirect_to office_info_path, notice: "Office was successfully updated." }
         format.json { render :show, status: :ok, location: @office }
       else
         format.html { render :edit, status: :unprocessable_entity }

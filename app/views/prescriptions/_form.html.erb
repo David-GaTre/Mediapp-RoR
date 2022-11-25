@@ -1,0 +1,30 @@
+<%= form_with(model: prescription) do |form| %>
+  <% if prescription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+
+      <ul>
+        <% prescription.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <% patients_array = @patients.map { |p| [p.user.full_name, p.id] } %>
+      <%= form.label :patient_id, "Paciente",class: "form-label" %>
+      <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
+      
+      <%= form.label :body, "Indicaciones ",class: "form-label" %>
+      <%= form.text_area :body, class: "form-control" %>
+
+      <%= form.hidden_field :office_id, value: prescription.office_id %>
+    </div>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit 'Crear', class: "btn btn-secondary"  %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<div class = "row mt-3 bg-white shadow rounded p-3 input-group-lg" >
+  <div class = "col-md-7" >
+    <h2>Mi consultorio</h1>
+    <h4>Nombre: </h4> <%= office.name %>
+    <h4>Dirección: </h4> <%= office.address %>
+    <h4>Teléfono: </h4> <%= office.phone_number %>
+    <h4>Hora de Apertura: </h4> <%= office.open_hour %>
+    <h4>Hora de Salida: </h4> <%= office.close_hour %>
+  </div>
+  <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary' %>
+</div>
