@@ -62,7 +62,8 @@ body {
 }
 
 .full-height {
-  height: 100vh;
+  height: auto !important;
+  min-height: 100%;
 }
 
 .office-container {
@@ -85,11 +86,11 @@ body {
   width: 2em;
   height: 2em;
   background-color: #343a40;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .main-header {
-  color:#b84300;
+  color: #b84300;
   font-family: verdana;
   font-weight: bold;
 }
@@ -98,36 +99,32 @@ body {
   text-align: center;
 }
 
-.bg-text{
+.bg-text {
   font-size: 25px;
 }
-
 
 .bg-left-padding {
   padding: 3rem 0;
   padding-left: 6rem;
 }
 
-
-
 .office-name-badge {
-  background-color:#67838e;
-  color:#e8e9eb;
+  background-color: #67838e;
+  color: #e8e9eb;
   border-radius: 10px;
   width: fit-content;
 }
 
 .custom-form-label {
-  font-family:verdana;
-  font-size:17px;
+  font-family: verdana;
+  font-size: 17px;
 }
 
 .back-btn {
-  font-family:verdana;
-  font-size:17px;
+  font-family: verdana;
+  font-size: 17px;
   font-weight: bold;
 }
-
 
 @media screen and (min-width: 640px) {
   .my-meetings {
