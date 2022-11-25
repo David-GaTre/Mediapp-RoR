@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable#, :confirmable #, :validatable
+         :recoverable, :rememberable, :confirmable, :validatable
 
   def full_name    
     self.name + " " + self.first_last_name + " " + self.second_last_name
