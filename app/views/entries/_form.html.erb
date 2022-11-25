@@ -13,14 +13,14 @@
       </div>
     <% end %>
 
-    <% patients_array = @patients.map { |p| [p.user.full_name, p.id] } %>
-    <%= form.label :patient_id, "Paciente",class: "form-label" %>
-    <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
     
-    <%= form.label :entry_type, "Tipo de Entrada ",class: "form-label" %>
+    <% patients_array = @patients.map { |p| [p.user.full_name, p.id] } %>
+    <p style="font-family:verdana;font-size:17px;"> <strong><%= form.label :patient_id, "Paciente",class: "form-label" %></strong></p>
+    <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
+    <p style="font-family:verdana;font-size:17px;"> <strong><%= form.label :entry_type, "Tipo de Entrada ",class: "form-label" %></strong></p>
     <%= form.select :entry_type, options_for_select([ [], [ "Consulta", "consultation"], ["Hospitalización", "hospitalization"] ], ""),{}, :class => "form-control" %>
 
-    <%= form.label :comments, "Comentarios ",class: "form-label" %>
+    <p style="font-family:verdana;font-size:17px;"><strong><%= form.label :comments, "Comentarios ",class: "form-label" %></strong></p>
     <%= form.text_area :comments, class: "form-control" %>
 
     <%= form.hidden_field :office_id, value: entry.office_id %>
