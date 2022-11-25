@@ -60,6 +60,13 @@ class OfficesController < ApplicationController
     end
   end
 
+  def show_info     
+    office =  Office.find(params[:office])
+    respond_to do |format|
+      format.html { render :template => "offices/office_info_page", :locals => { :office => office } }
+    end
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_office

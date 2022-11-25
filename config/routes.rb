@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   post 'entries/new', to: 'entries#new'
   post 'prescriptions/new', to: 'prescriptions#new'
 
+
   post '/register_office', to: 'patients#register_office'
+  post '/office_info', to: 'offices#show_info', as: 'office_info'
   post '/scheduler_meeting', to: 'patients#schedule_meeting', as: 'meetings_scheduler'
   devise_for :users, controllers: {
     registrations: "users/registrations",
