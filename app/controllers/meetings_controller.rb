@@ -11,7 +11,6 @@ class MeetingsController < ApplicationController
   end
 
   def show_my_meetings 
-    
     all_meetings = current_user.patient.meetings
     @today_meetings = all_meetings.where('extract(year from start_time) = ? AND extract(month from start_time) = ?  AND extract(day from start_time) = ?', Date.today.year, Date.today.month, Date.today.day)
     @previous_meetings = all_meetings - @today_meetings 
@@ -41,6 +40,12 @@ class MeetingsController < ApplicationController
     
     respond_to do |format|
       if @meeting.save
+        
+        @user = Patient.find(params[:patient_id]).user
+        @doctor = Doctor.find(params[:doctor_id])
+        
+        
+        UserMailer.with(user: @user, doctor: @doctor, meeting: @meeting).welcome_email.deliver_now
         format.html { redirect_to root_path, notice: "Cita agendada correctamente." }
         format.json { render :show, status: :created, location: @meeting }
       else
@@ -68,7 +73,7 @@ class MeetingsController < ApplicationController
     @meeting.destroy
 
     respond_to do |format|
-      format.html { redirect_to meetings_url, notice: "Meeting was successfully destroyed." }
+      format.html { redirect_to show_my_meetings_path }
       format.json { head :no_content }
     end
   end
