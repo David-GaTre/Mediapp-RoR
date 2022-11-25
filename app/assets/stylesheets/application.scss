@@ -76,7 +76,7 @@ body {
 }
 
 .simple-calendar table {
-  min-height: 300px;
+  min-height: 400px;
 }
 
 .position-relative-example {
@@ -90,4 +90,59 @@ body {
   height: 2em;
   background-color: #343a40;
   border-radius: .25rem;
+}
+
+.main-header {
+  color:#b84300;
+  font-family: verdana;
+  font-weight: bold;
+}
+
+.center {
+  text-align: center;
+}
+
+.bg-text{
+  font-size: 25px;
+}
+
+
+.bg-left-padding {
+  padding: 3rem 0;
+  padding-left: 6rem;
+}
+
+.bg-y-margin {
+  margin: 2rem 8rem;
+}
+
+.office-name-badge {
+  background-color:#67838e;
+  color:#e8e9eb;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.simple-calendar {
+  border-radius: 5px;
+  .day {}
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
 }

@@ -1,25 +1,53 @@
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<h1>Prescriptions</h1>
+<div class="bg-white shadow rounded p-3">
+  <h1 style="color:#b84300" font="font-family:verdana"><strong>Recetas</strong></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @prescriptions.each do |prescription| %>
+  <table class="table table-striped ">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', prescription %></td>
-        <td><%= link_to 'Edit', edit_prescription_path(prescription) %></td>
-        <td><%= link_to 'Destroy', prescription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Fecha</th>
+        <th>Paciente</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @prescriptions.each do |prescription| %>
+        
+        <tr>
+          <td><%= prescription.date %></td>
+          <td><%= prescription.patient.user.full_name %></td>  
+          <td>  
+            <a type="button" data-toggle="modal" data-target="#prescription-<%=prescription.id%>"> Ver más </a> 
+          </td>  
+          <td>  
+            <%= button_to 'Imprimir', {:action => "download_prescription", :prescription_id => prescription.id, :format => 'pdf'},  method: :post %> 
+          </td>  
+        </tr>
 
-<%= link_to 'New Prescription', new_prescription_path %>
+        
+        <div class="modal fade" id="prescription-<%=prescription.id%>">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title"><%= prescription.patient.user.full_name%> - <%= prescription.date %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <%= prescription.body %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </tbody>
+    <br>
+  </table>
+<%= link_to 'Regresar', root_path %>
+</div>

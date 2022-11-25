@@ -9,15 +9,11 @@
     <h4>Parece que aun no tiene un consultorio creado. Haga clic en el siguiente botón para hacerlo </h4>
     <%= link_to 'Crear consultorio', new_office_path, class: "btn btn-primary" %>
   <% else %>
-    <div style="background-color:#67838e;color:#e8e9eb;border-radius: 10px">
-    <h5 style="margin: 10px"><%= user.doctor.office.name %></h5>
+    <div class="office-name-badge">
+      <h5 style="margin: 10px"><%= user.doctor.office.name %></h5>
     </div>
     
-    <div class="position-relative" >
-    <div class="alert alert-secondary" style="background-color:#1e212b;color:#e8e9eb;border-radius: 20px" >
-      Comparte el siguiente código con sus pacientes para que se registren en su consultorio virtual <span class="text-primary" style="color:#e8e9eb"><%= user.doctor.office.code %> </span>
-    </div>
-    </div> 
+    
     <h5>Mi Agenda</h5>
     <div class="row" >
       <div class="col-md-8">

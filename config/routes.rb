@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
 
   post '/register_office', to: 'patients#register_office'
-  post '/office_info', to: 'offices#show_info', as: 'office_info'
+  post 'prescription#download_prescription', action: :download_prescription, controller: 'prescriptions'
+  get '/office_info', to: 'offices#show_info', as: 'office_info' 
   post '/scheduler_meeting', to: 'patients#schedule_meeting', as: 'meetings_scheduler'
   devise_for :users, controllers: {
     registrations: "users/registrations",

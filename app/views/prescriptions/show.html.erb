@@ -1,11 +1,18 @@
-<p id="notice"><%= notice %></p>
-<h2>Receta</h2>
-<b>Paciente: </b> <%= Patient.find(@prescription.patient_id).full_name%>
-<b>Fecha: </b> <%= @prescription.date %>
-<br>
-<b>Indicaciones: </b> 
-<%= @prescription.body %>
+<div class="row bg-white shadow rounded p-3">
+  <div class="col-md-6">
+    <p id="notice"><%= notice %></p>
+    <h2>Receta</h2>
+    <b>Paciente: </b> <%= Patient.find(@prescription.patient_id).full_name%>
+    <b>Fecha: </b> <%= @prescription.date %>
+    <br>
+    <b>Indicaciones: </b> 
+    <%= @prescription.body %>
+    <br>
+  </div>
+</div>
 
-<br>
-<%= link_to 'Edit', edit_prescription_path(@prescription) %> |
-<%= link_to 'Back', prescriptions_path %>
+
+
+
+
+
