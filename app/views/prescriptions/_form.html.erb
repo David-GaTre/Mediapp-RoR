@@ -19,7 +19,7 @@
       <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
       <br>
       <p style="font-family:verdana;font-size:17px;"> <strong> <%= form.label :body, "Indicaciones ",class: "form-label" %></strong></p>
-      <%= form.text_area :body, class: "form-control" %>
+      <%= form.text_area :body, cols: 30, rows: 10, class: "form-control" %>
 
       <%= form.hidden_field :office_id, value: prescription.office_id %>
     </div>
