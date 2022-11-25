@@ -15,7 +15,6 @@
         <tr>
           <td><%= m.start_time.strftime('%H:%M %p') %></td>
           <td><%= m.doctor.full_name %></td>
-          <td><%= link_to 'Cancelar', m, method: :delete, data: { confirm: '¿Estás seguro de querer cancelar la cita?' } %></td>
         </tr>
       <% end %>
       </tbody>
@@ -34,6 +33,9 @@
         <tr>
           <td><%= m.start_time.strftime('%d/%m/%Y %H:%M %p') %></td>
           <td><%= m.doctor.full_name %></td>
+          <% if m.start_time > Date.today %>
+          <td><%= link_to 'Cancelar', m, method: :delete, data: { confirm: '¿Estás seguro de querer cancelar la cita?' } %></td>
+          <% end %>
         </tr>
       <% end %>
       </tbody>

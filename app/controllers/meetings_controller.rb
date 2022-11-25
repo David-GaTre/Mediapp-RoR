@@ -11,7 +11,7 @@ class MeetingsController < ApplicationController
   end
 
   def show_my_meetings 
-    all_meetings = current_user.patient.meetings
+    all_meetings = current_user.patient.meetings.order('start_time DESC')
     @today_meetings = all_meetings.where('extract(year from start_time) = ? AND extract(month from start_time) = ?  AND extract(day from start_time) = ?', Date.today.year, Date.today.month, Date.today.day)
     @previous_meetings = all_meetings - @today_meetings 
 
