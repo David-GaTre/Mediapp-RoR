@@ -15,6 +15,7 @@
         <tr>
           <td><%= m.start_time.strftime('%H:%M %p') %></td>
           <td><%= m.doctor.full_name %></td>
+          <td><%= link_to 'Cancelar', m, method: :delete, data: { confirm: '¿Estás seguro de querer cancelar la cita?' } %></td>
         </tr>
       <% end %>
       </tbody>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>¡Hola, <%= @user.name %>!</h1>
+    <p>
+      La consulta con el Dr. <%= @doctor.full_name %> ha sido creada exitosamente.
+      Los datos de la cita son:
+      <br>
+      <b>Día: </b> <%=  @meeting.start_time.strftime('%d/%m/%Y')%> <br>
+      <b>Hora: </b> <%= @meeting.start_time.strftime('%H:%M %p')%><br>
+      <b>Lugar: </b><%= @doctor.office.address %>
+      Cualquier comentario comunicarse directamente con el consultorio al <%= @doctor.office.phone_number%>
+    </p>
+  </body>
+</html>
