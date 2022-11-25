@@ -193,6 +193,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    ruby_http_client (3.5.5)
     rubyzip (2.3.2)
     safe_random (0.0.6)
     sass-rails (6.0.0)
@@ -211,6 +212,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    sendgrid-ruby (6.6.2)
+      ruby_http_client (~> 3.4)
     simple_calendar (2.4.3)
       rails (>= 3.0)
     spring (4.1.0)
@@ -281,6 +284,7 @@ DEPENDENCIES
   safe_random
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  sendgrid-ruby
   simple_calendar (~> 2.4)
   spring
   turbolinks (~> 5)
