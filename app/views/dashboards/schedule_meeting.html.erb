@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
-<h4>Agendar cita con el doctor <%= office.doctor.user.full_name %></h4>
+<div class="main-header">
+<h4><strong>Agendar cita con el doctor <%= office.doctor.user.full_name %></strong></h4>
+</div>
+<div class="bg-white shadow rounded p-3 input-group-lg;">
 <div class="row">
     <div class="col-md-4">
       <%= form_with url: meetings_path, method: :post, local: true do |f| %>
-      
-        <%= f.label :start_time %><br>
+        <p style="font-size:17px"><strong><%= f.label :start_time %></strong></p><br>
         <%= f.datetime_select :start_time, 
         :start_hour => office.open_hour.strftime('%H').to_i, 
         :end_hour => office.close_hour.strftime('%H').to_i-1,
@@ -17,8 +19,8 @@
         <%= f.hidden_field :patient_id, value: patient.id %>
 
         <br><br>
-        <%= f.submit "Agendar Cita", :class => "btn btn-outline-secondary" %>
+        <%= f.submit "Agendar Cita", :class => "btn btn-mahogany" %>
       <% end %>
-
+</div>
     </div>
 </div>

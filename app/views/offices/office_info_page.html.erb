@@ -1,11 +1,27 @@
-<div class = "row mt-3 bg-white shadow rounded p-3 input-group-lg" >
-  <div class = "col-md-7" >
-    <h2>Mi consultorio</h1>
-    <h4>Nombre: </h4> <%= office.name %>
-    <h4>Dirección: </h4> <%= office.address %>
-    <h4>Teléfono: </h4> <%= office.phone_number %>
-    <h4>Hora de Apertura: </h4> <%= office.open_hour %>
-    <h4>Hora de Salida: </h4> <%= office.close_hour %>
+<div class = "row m-5 bg-white shadow rounded p-3 input-group-lg" >
+  <div class = "col-md-12" >
+    <h2 class="main-header">Mi consultorio</h1>
+    <div class="position-relative" >
+      <div class="alert alert-secondary" style="background-color:#1e212b;color:#e8e9eb;border-radius: 20px" >
+        Comparte el siguiente código con sus pacientes para que se registren en su consultorio virtual <span class="text-primary" style="color:#e8e9eb"><b><%= office.code %></b> </span>
+      </div>
+    </div> 
+    <span class="text-secondary"><b>Nombre</b></span> <br>
+    <p class="bg-text"> <%= office.name %> </p>
+
+    <span class="text-secondary"><b>Dirección</b></span> <br>
+    <p class="bg-text"> <%= office.address %> </p>
+
+    <span class="text-secondary"><b>Teléfono</b></span> <br>
+    <p class="bg-text"> <%= office.phone_number %> </p>
+
+    <span class="text-secondary"><b>Hora de Apartura</b></span> <br>
+    <p class="bg-text">  <%= office.open_hour.strftime('%H:%M') %> </p>
+
+    <span class="text-secondary"><b>Hora de Salida</b></span> <br>
+    <p class="bg-text"> <%= office.close_hour.strftime('%H:%M') %></p>
+
+  <br>
+  <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary btn-sm' %>
   </div>
-  <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary' %>
 </div>

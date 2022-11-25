@@ -23,18 +23,18 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= form.label :height, "Altura", class: "form-label" %>
+      <p style="font-family:verdana;font-size:17px;"> <strong> <%= form.label :height, "Altura", class: "form-label" %></strong></p>
         <%= form.number_field :height, placeholder:"Metros", :min => 0, :max => 3, :step => 0.01, :class => "form-control"%>
       </div>
       <div class="col-md-6">
-        <%= form.label :weight, "Peso", class: "form-label" %>
+      <p style="font-family:verdana;font-size:17px;"> <strong>  <%= form.label :weight, "Peso", class: "form-label" %></strong></p>
         <%= form.number_field :weight, placeholder:"Kilogramos", :min => 0, :max => 200, :step => 0.01 , :class => "form-control" %>
       </div>
     </div>
 
     <br>
     <div class="input-group">
-      <%= form.label :bloodPressureSys, "Presion Arterial", class: "input-group-text" %>
+    <p style="font-family:verdana;font-size:17px;"> <strong> <%= form.label :bloodPressureSys, "Presion Arterial", class: "input-group-text" %></strong></p>
       <%= form.number_field :bloodPressureSys, placeholder:"Sistolica", :min => 50, :max => 250, :step => 1, :class => "form-control"%>
       <%= form.number_field :bloodPressureDia, placeholder:"Diastolica", :min => 50, :max => 250, :step => 1 , :class => "form-control" %>
     </div>
@@ -49,7 +49,7 @@
     <div class="actions">
 
 
-    <p style="font-family:verdana">  <%= form.submit 'Crear', class: "btn btn-secondary" %></p
+    <p style="font-family:verdana">  <%= form.submit 'Crear', class: "btn btn-mahogany" %></p
 
     </div>
     </div>

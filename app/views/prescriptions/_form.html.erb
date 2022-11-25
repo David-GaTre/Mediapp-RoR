@@ -14,10 +14,11 @@
   <div class="row">
     <div class="col-md-6">
       <% patients_array = @patients.map { |p| [p.user.full_name, p.id] } %>
-      <%= form.label :patient_id, "Paciente",class: "form-label" %>
+      <br>
+      <p style="font-family:verdana;font-size:17px;"> <strong><%= form.label :patient_id, "Paciente",class: "form-label" %></strong></p>
       <%= form.select :patient_id, options_for_select(patients_array),{}, :class => "form-control" %>
-      
-      <%= form.label :body, "Indicaciones ",class: "form-label" %>
+      <br>
+      <p style="font-family:verdana;font-size:17px;"> <strong> <%= form.label :body, "Indicaciones ",class: "form-label" %></strong></p>
       <%= form.text_area :body, class: "form-control" %>
 
       <%= form.hidden_field :office_id, value: prescription.office_id %>
@@ -25,6 +26,6 @@
   </div>
   <br>
   <div class="actions">
-    <%= form.submit 'Crear', class: "btn btn-secondary"  %>
+    <%= form.submit 'Crear', class: "btn btn-mahogany"  %>
   </div>
 <% end %>
