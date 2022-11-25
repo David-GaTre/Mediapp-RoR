@@ -7,8 +7,12 @@
   </div>
 <% end %>
 <% if current_user %>
-  <h1>Dashboard de Paciente</h1>
-  <h3> Bienvenid@  <%= user.full_name%> <h3>
+  <div style="margin: 10px">
+    <h2>Dashboard de Paciente</h2>
+    <h3 style="color:#6f7c12"> <img src="/assets/palogo" width="28" height="30"/> Bienvenid@  <%= user.full_name%> <h3>
+  </div>
+  <br>
+  
   <% if offices.empty? %>
     <div class="alert alert-primary">
       <p>
@@ -19,11 +23,13 @@
   <% else %>
     <h4>Tiene <%= @meetings_today.count %> consulta(s) agendada(s) para hoy. </h4>
     <% offices.each do |office| %>
-    <div class="office-container">
+    <div class="office-container" style="background-color:#6f7c12;color:#e8e9eb">
       <h3><%= office.name %></h3>
+      <hr style="background-color:#e8e9eb">
       <h5>Teléfono: <%= office.phone_number %></h5>
       <h5>Dirección: <%= office.address %></h5>
-      <%= button_to "Agendar Cita", meetings_scheduler_path(office: office.id, patient: user.patient.id) , method: :post, :class => 'btn btn-secondary' %>
+      <br>
+      <%= button_to "Agendar Cita", meetings_scheduler_path(office: office.id, patient: user.patient.id) , method: :post, :class => 'btn btn-secondary', :style => 'background-color: #1e212b'%>
     </div>
     </br>
     <% end %>

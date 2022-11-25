@@ -2,7 +2,10 @@
 <div class="container-fluid bg-platinum full-height">
   <div class="d-flex flex-row justify-content-center">
     <div class="container flex-column shadow bg-white m-5 px-5">
-      <h2 class="mt-4 text-center">Registro</h2>
+      <div class="d-flex justify-content-center">
+        <img src="/assets/logoBlack" width="90" height="90" class="my-3"/>
+      </div>
+      <h2 class="mt-2 text-center">Registro</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 

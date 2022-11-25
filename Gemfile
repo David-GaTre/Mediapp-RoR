@@ -34,6 +34,8 @@ gem "letter_opener", group: :development
 gem 'mailjet'
 gem 'rails-i18n'
 gem 'prawn', '~> 2.1'
+gem 'sendgrid-ruby'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
