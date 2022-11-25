@@ -71,10 +71,6 @@ body {
   border-radius: 15px;
 }
 
-.dashboard-container {
-  padding: 0 25px;
-}
-
 .simple-calendar table {
   min-height: 400px;
 }
@@ -112,9 +108,7 @@ body {
   padding-left: 6rem;
 }
 
-.bg-y-margin {
-  margin: 2rem 8rem;
-}
+
 
 .office-name-badge {
   background-color:#67838e;
@@ -123,26 +117,33 @@ body {
   width: fit-content;
 }
 
-.simple-calendar {
-  border-radius: 5px;
-  .day {}
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
+.custom-form-label {
+  font-family:verdana;
+  font-size:17px;
+}
 
-  .today {}
-  .past {}
-  .future {}
+.back-btn {
+  font-family:verdana;
+  font-size:17px;
+  font-weight: bold;
+}
 
-  .start-date {}
 
-  .prev-month {}
-  .next-month { }
-  .current-month {}
-
-  .has-events {}
+@media screen and (min-width: 640px) {
+  .my-meetings {
+    margin: 2rem 9rem;
+    padding: 2rem;
+  }
+  .dashboard-container {
+    padding: 0 25px;
+  }
+  .bg-y-margin {
+    margin: 2rem 8rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .my-meetings {
+    margin: 1rem 1rem;
+    padding: 1rem;
+  }
 }

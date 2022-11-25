@@ -2,6 +2,7 @@ class Patient < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :offices
   has_many :entries
+  has_many :meetings
   has_many :prescriptions
 
   def full_name    

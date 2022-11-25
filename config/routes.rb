@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/register_office', to: 'patients#register_office'
   post 'prescription#download_prescription', action: :download_prescription, controller: 'prescriptions'
   get '/office_info', to: 'offices#show_info', as: 'office_info' 
+  get '/my_meetings', to: 'meetings#show_my_meetings', as: 'show_my_meetings' 
   post '/scheduler_meeting', to: 'patients#schedule_meeting', as: 'meetings_scheduler'
   devise_for :users, controllers: {
     registrations: "users/registrations",

@@ -18,6 +18,8 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    office = Entry.find(params[:id]).office
+    @patients = office.patients
   end
 
   # POST /entries or /entries.json
@@ -41,7 +43,7 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
+        format.html { redirect_to entries_path(office: current_user.doctor.office.id), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }

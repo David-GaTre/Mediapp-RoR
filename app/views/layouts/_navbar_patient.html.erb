@@ -1,18 +1,39 @@
 
 
+
+
+
+<!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="d-flex flex-grow-1">
-        <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-        <a class="navbar-brand" href="<%= root_path%>">
-            <img src="/assets/logo" width="50" height="50" class="d-inline-block align-middle"/>
-            MediApp
-        </a>
-    </div>
-    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
-        <ul class="navbar-nav ml-auto flex-nowrap">
-            <li class="nav-item">
-              <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
-            </li>
-        </ul>
-    </div>
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="<%= root_path%>">
+    <img src="/assets/logo" width="50" height="50" class="d-inline-block align-middle"/>
+    MediApp
+  </a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg></span></button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto flex-nowrap">
+        <li class="nav-item">
+            <%= link_to "Mis Consultas", show_my_meetings_path,  class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
+        </li>
+    </ul>
+    <!-- Links -->
+
+  </div>
+  <!-- Collapsible content -->
+
 </nav>
+<!--/.Navbar-->

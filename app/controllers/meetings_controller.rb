@@ -10,6 +10,14 @@ class MeetingsController < ApplicationController
   def show
   end
 
+  def show_my_meetings 
+    
+    all_meetings = current_user.patient.meetings
+    @today_meetings = all_meetings.where('extract(year from start_time) = ? AND extract(month from start_time) = ?  AND extract(day from start_time) = ?', Date.today.year, Date.today.month, Date.today.day)
+    @previous_meetings = all_meetings - @today_meetings 
+
+  end
+
   # GET /meetings/new
   def new
     @meeting = Meeting.new
@@ -24,6 +32,13 @@ class MeetingsController < ApplicationController
     
     @meeting = Meeting.new(meeting_params)
 
+    st = Time.utc(params["start_time(1i)"].to_i,params["start_time(2i)"].to_i, params["start_time(3i)"].to_i, params["start_time(4i)"].to_i+6,  params["start_time(5i)"].to_i, 0).in_time_zone 
+    doctor_meetings = Meeting.all.where(doctor_id: params[:doctor_id], start_time: st)
+
+    if doctor_meetings.count > 0 
+      redirect_to root_path, notice: "Horario no disponible" and return
+    end
+    
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to root_path, notice: "Cita agendada correctamente." }
@@ -69,3 +84,8 @@ class MeetingsController < ApplicationController
       params.permit(:name, :start_time, :doctor_id, :patient_id)
     end
 end
+
+
+
+
+
