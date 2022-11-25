@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @entries = Entry.all.where(office_id: params[:office])
+    @entries = Entry.all.where(office_id: params[:office]).order('created_at DESC')
   end
 
   # GET /entries/1 or /entries/1.json
@@ -70,7 +70,7 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:comments, :office_id, :patient_id, :entry_type)
+      params.require(:entry).permit(:comments, :office_id, :patient_id, :entry_type, :weight, :height, :bloodPressureSys, :bloodPressureDia)
     end
 
 end
