@@ -15,6 +15,9 @@ class DashboardsController < ApplicationController
           format.html { render :template => "dashboards/patient", :locals => { :user => @current_user, :offices => @offices } }
         end
       end
+      if current_user.role == "admin"
+        redirect_to admin_root_url
+      end
     else
       redirect_to new_user_session_url
     end

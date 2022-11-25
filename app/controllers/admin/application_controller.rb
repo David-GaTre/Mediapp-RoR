@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      redirect_to new_user_session_url, alert: 'Not authorized.' unless current_user && access_whitelist
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -17,5 +17,9 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+    private
+      def access_whitelist
+        current_user.role == 'admin'
+      end
   end
 end
