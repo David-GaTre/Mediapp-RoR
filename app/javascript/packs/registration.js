@@ -15,13 +15,6 @@ manageRoleForm = function () {
 
       break;
 
-    case "assitant":
-      patientForm.style.display = "none";
-      doctorForm.style.display = "none";
-      console.log("assistant");
-
-      break;
-
     default:
       patientForm.style.display = "none";
       doctorForm.style.display = "none";
