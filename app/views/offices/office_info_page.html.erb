@@ -7,4 +7,5 @@
     <h4>Hora de Apertura: </h4> <%= office.open_hour %>
     <h4>Hora de Salida: </h4> <%= office.close_hour %>
   </div>
+  <%= button_to "Editar", edit_office_path(office), method: :get,  :class => 'btn btn-secondary' %>
 </div>
