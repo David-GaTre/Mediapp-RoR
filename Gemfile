@@ -30,7 +30,8 @@ gem 'pry-rails'
 gem 'pry-doc'
 gem "simple_calendar", "~> 2.4"
 gem 'safe_random'
-
+gem "letter_opener", group: :development
+gem 'mailjet'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
