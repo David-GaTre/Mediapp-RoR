@@ -49,7 +49,6 @@ class EntriesController < ApplicationController
     @entry.date = DateTime.now  
     @entry.office_id = current_user.doctor.office.id
     
-    binding.pry
     
     respond_to do |format|
       if @entry.save
