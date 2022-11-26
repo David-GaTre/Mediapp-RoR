@@ -41,14 +41,16 @@
     </div>
   
     <br>
-    <div class="actions">
-      <%= form.submit 'Submit', class: "btn btn-mahogany" %>
-    </div>
+    
   </div>
   <div class="col-md-6">
    <strong><%= form.label :comments, "Comentarios ", class: "custom-form-label" %></strong>
     <%= form.text_area :comments, cols: 30, rows: 10,class: "form-control" %>
     <%= form.hidden_field :office_id, value: entry.office_id %>
+    <br>
+    <div class="actions">
+      <%= form.submit 'Submit', class: "btn btn-mahogany" %>
+    </div>
   </div>
   <% end %>
 </div>

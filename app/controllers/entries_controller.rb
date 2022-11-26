@@ -19,7 +19,6 @@ class EntriesController < ApplicationController
       @entries = @all_entries.where(patient_id:  patients)
     end  
     
-    
     if @entries.count == 0 
       @entries = @all_entries
     end
@@ -48,6 +47,10 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
     @entry.date = DateTime.now  
+    @entry.office_id = current_user.doctor.office.id
+    
+    binding.pry
+    
     respond_to do |format|
       if @entry.save
         format.html { redirect_to entries_path(office: @entry.office_id) }
@@ -77,7 +80,6 @@ class EntriesController < ApplicationController
   # DELETE /entries/1 or /entries/1.json
   def destroy
     @entry.destroy
-
     respond_to do |format|
       format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
@@ -94,7 +96,7 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.permit(:date_filter, :comments, :office_id, :patient_id, :entry_type, :weight, :height, :bloodPressureSys, :bloodPressureDia)
+      params.require(:entry).permit(:comments, :office_id, :patient_id, :entry_type, :weight, :height, :bloodPressureSys, :bloodPressureDia)
     end
 
 end
