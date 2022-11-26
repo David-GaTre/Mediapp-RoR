@@ -15,24 +15,24 @@
 
   <%= form.label :name, "Nombre del consultorio ",class: "form-label" %>
   <%= form.text_field :name, class: "form-control" %>
-
+  <br>
   <%= form.label :address,"Dirección", class: "form-label" %>
   <%= form.text_field :address, class: "form-control" %>
-
+  <br>
   <%= form.label :phone_number, "Teléfono", class: "form-label" %>
-  <%= form.text_field :phone_number, class: "form-control" %>
-
+  <%= form.telephone_field :phone_number, class: "form-control" %>
+  <br>
   <%= form.label :open_hour, "Hora de Apertura", class: "form-label" %>
-  <%= form.select "open_hour", (0..23).to_a %>:00
-
+  <%= form.select "open_hour", (0..23).to_a, class: "form-select form-control" %>:00
+  <br>
   <%= form.label :close_hour, "Hora de Cierre", class: "form-label" %>
-  <%= form.select "close_hour", (0..23).to_a %>:00
+  <%= form.select "close_hour", (0..23).to_a, class: "form-select form-control" %>:00
 
+  <br>
   <br>
 
   <div class="actions">
-    <%= form.submit "Crear consultorio" %>
+    <%= form.submit "Submit", :class => "btn btn-primary" %>
   </div>
 <% end %>
 
-jquery:

@@ -3,7 +3,14 @@ class PatientsController < ApplicationController
 
   # GET /patients or /patients.json
   def index
-    @patients = Patient.all
+    @office = Office.find(params[:office])
+    @patients = @office.patients
+  end
+
+  def delete_patient
+    Meeting.all.where(patient_id: params[:patient], office_id: params[:office]).delete_all
+    Patient.find(params[:patient]).offices.delete(Office.find(params[:office]))
+    redirect_back(fallback_location: root_path)
   end
 
   # GET /patients/1 or /patients/1.json

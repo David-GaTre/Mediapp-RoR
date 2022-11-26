@@ -4,6 +4,7 @@
     <div class="d-flex flex-grow-1">
         <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
         <a class="navbar-brand" href="<%= root_path%>">
+          <img src="/assets/logo" width="50" height="50" class="d-inline-block align-middle"/>
             MediApp
         </a>
     </div>
@@ -12,6 +13,9 @@
             <% if !user.doctor.office.nil?  %>
               <li class="nav-item">
                 <a class="nav-link" href=<%= new_entry_path(office: user.doctor.office.id)%>>Crear Entrada</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=<%= new_prescription_path(office: user.doctor.office.id)%>>Crear Receta</a>
               </li>
             <% end %>
             <li class="nav-item dropdown">
@@ -22,13 +26,19 @@
                 <% if !user.doctor.office.nil? %>
                   <a class="dropdown-item" href=<%= entries_path(office: user.doctor.office.id) %>>Entradas</a>
                 <% end %>
-                <a class="dropdown-item" href="#">Pacientes</a>
-                <a class="dropdown-item" href="#">Recetas</a>
+                <% if !user.doctor.office.nil? %>
+                  <a class="dropdown-item" href=<%= prescriptions_path(office: user.doctor.office.id) %>>Recetas</a>
+                <% end %>
+                <% if !user.doctor.office.nil? %>
+                  <a class="dropdown-item" href=<%= patients_path(office: user.doctor.office.id) %>>Pacientes</a>
+                <% end %>
               </div>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Consultorio</a>
-            </li>
+            <% if !user.doctor.office.nil? %>
+                  <li class="nav-item">
+                      <%= link_to "Consultorio", office_info_url, class: "nav-link" %>
+                  </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
             </li>

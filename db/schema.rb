@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_11_24_071915) do
+ActiveRecord::Schema.define(version: 2022_11_25_004154) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -83,6 +82,19 @@ ActiveRecord::Schema.define(version: 2022_11_24_071915) do
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
+  create_table "prescriptions", force: :cascade do |t|
+    t.text "body"
+    t.date "date"
+    t.bigint "meeting_id"
+    t.bigint "office_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meeting_id"], name: "index_prescriptions_on_meeting_id"
+    t.index ["office_id"], name: "index_prescriptions_on_office_id"
+    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "name", default: "", null: false
@@ -117,4 +129,7 @@ ActiveRecord::Schema.define(version: 2022_11_24_071915) do
   add_foreign_key "meetings", "patients"
   add_foreign_key "offices", "doctors"
   add_foreign_key "patients", "users"
+  add_foreign_key "prescriptions", "meetings"
+  add_foreign_key "prescriptions", "offices"
+  add_foreign_key "prescriptions", "patients"
 end

@@ -32,6 +32,10 @@ gem "simple_calendar", "~> 2.4"
 gem 'safe_random'
 gem "letter_opener", group: :development
 gem 'mailjet'
+gem 'rails-i18n'
+gem 'prawn', '~> 2.1'
+gem 'sendgrid-ruby'
+gem "administrate"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

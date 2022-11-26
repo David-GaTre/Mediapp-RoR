@@ -41,7 +41,7 @@ class OfficesController < ApplicationController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to office_url(@office), notice: "Office was successfully updated." }
+        format.html { redirect_to office_info_path, notice: "Office was successfully updated." }
         format.json { render :show, status: :ok, location: @office }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,6 +59,13 @@ class OfficesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_info
+    office = current_user.doctor.office
+    respond_to do |format|
+      format.html { render :template => "offices/office_info_page", :locals => { :office => office } }
+    end
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

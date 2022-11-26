@@ -1,46 +1,53 @@
-<% if notice %>
-  <div class="alert alert-secondary alert-dismissible fade show" >
-  <h4 id="notice" class="text-black"> <%= notice %> </h4>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  </div>
-<% end %>
-<% if current_user %>
-  <h1>Dashboard de Paciente</h1>
-  <h3> Bienvenid@  <%= user.full_name%> <h3>
-  <% if offices.empty? %>
-    <div class="alert alert-primary">
-      <p>
-        Parece que aún no estás registrado en algún consultorio virtual.
-        Comunícate con tu doctor para que te proporcione el código de registro y puedas acceder a su consultorio virtual.
-      </p>
+<div class="bg-white shadow rounded px-4 py-3 mx-3 my-2">
+  <% if notice %>
+    <div class="alert alert-secondary alert-dismissible fade show mt-4" >
+    <h4 id="notice" class="text-black"> <%= notice %> </h4>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
     </div>
-  <% else %>
-    <h4>Tiene <%= @meetings_today.count %> consulta(s) agendada(s) para hoy. </h4>
-    <% offices.each do |office| %>
-    <div class="office-container">
-      <h3><%= office.name %></h3>
-      <h5>Teléfono: <%= office.phone_number %></h5>
-      <h5>Dirección: <%= office.address %></h5>
-      <%= button_to "Agendar Cita", meetings_scheduler_path(office: office.id, patient: user.patient.id) , method: :post, :class => 'btn btn-secondary' %>
+  <% end %>
+  <% if current_user %>
+    <div class="mt-5">
+      <h3 style="color:#6f7c12"> <img src="/assets/palogo" width="28" height="30"/> Bienvenid@  <%= user.full_name%> <h3>
     </div>
-    </br>
-    <% end %>
-  <% end %> 
-  <br>
-  <div class="row mx-auto text-center">
-    <div class="col-md-4">
-      <%= form_with url: "/register_office", method: :post do |form| %>
-        <%= form.hidden_field :id, value: user.patient.id %>
-        <div class="input-group mb-3">
-          <%= form.text_field :code, :class => "form-control", :placeholder => "Ej. ABkAWb7n" %>
-          <div class="input-group-append">
-            <%= form.submit "Añadir Consultorio", :class => "btn btn-outline-secondary" %>
-          </div>
-        </div>
+    <br>
+    
+    <% if offices.empty? %>
+      <div class="alert alert-primary">
+        <p>
+          Parece que aún no estás registrado en algún consultorio virtual.
+          Comunícate con tu doctor para que te proporcione el código de registro y puedas acceder a su consultorio virtual.
+        </p>
+      </div>
+    <% else %>
+      <h4>Tiene <%= link_to @meetings_today.count, show_my_meetings_path %> consulta(s) agendada(s) para hoy. </h4>
+      <% offices.each do |office| %>
+      <div class="office-container" style="background-color:#6f7c12;color:#e8e9eb">
+        <h3><%= office.name %></h3>
+        <hr style="background-color:#e8e9eb">
+        <h5>Teléfono: <%= office.phone_number %></h5>
+        <h5>Dirección: <%= office.address %></h5>
+        <br>
+        <%= button_to "Agendar Cita", meetings_scheduler_path(office: office.id, patient: user.patient.id) , method: :post, :class => 'btn btn-secondary', :style => 'background-color: #1e212b'%>
+      </div>
+      </br>
       <% end %>
+    <% end %> 
+    <br>
+    <div class="row mx-auto text-center">
+      <div class="col-md-4">
+        <%= form_with url: "/register_office", method: :post do |form| %>
+          <%= form.hidden_field :id, value: user.patient.id %>
+          <div class="input-group mb-5">
+            <%= form.text_field :code, :class => "form-control", :placeholder => "Ej. ABkAWb7n" %>
+            <div class="input-group-append">
+              <%= form.submit "Añadir Consultorio", :class => "btn btn-outline-secondary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-  
-<% end %>
+    
+  <% end %>
+</div>
